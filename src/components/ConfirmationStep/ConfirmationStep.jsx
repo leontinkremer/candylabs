@@ -1,13 +1,13 @@
 // built-in modules
 import React from "react";
-import Checkbox from "../Checkbox";
 
 const ConfirmationStep = ({ data, handleClick }) => {
-  console.log("data.insurances", data.insurances);
   const insurancesList = data.insurances.map((insurance) => {
-    console.log(insurance.label);
     return (
-      <p className="font-normal text-gray-700 dark:text-gray-400">
+      <p
+        key={insurance.id}
+        className="font-normal text-gray-700 dark:text-gray-400"
+      >
         {`${insurance.label}: ${
           insurance.available ? "vorhanden" : " nicht vorhanden"
         }`}
@@ -44,12 +44,9 @@ const ConfirmationStep = ({ data, handleClick }) => {
                 d="m1 9 4-4-4-4"
               />
             </svg>
-            <a
-              href="#"
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
-            >
+            <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
               Versicherungen
-            </a>
+            </span>
           </li>
           <li aria-current="page">
             <div className="flex items-center">
@@ -68,7 +65,8 @@ const ConfirmationStep = ({ data, handleClick }) => {
                   d="m1 9 4-4-4-4"
                 />
               </svg>
-              <span className="ml-1 text-sm font-medium text-gray-500 md:ml-2 dark:text-gray-400">
+
+              <span className="inline-flex items-center ml-1 text-sm font-medium text-blue-600 dark:text-gray-400 dark:hover:text-white">
                 Absenden
               </span>
             </div>
@@ -76,13 +74,14 @@ const ConfirmationStep = ({ data, handleClick }) => {
         </ol>
       </nav>
       <div className="block p-10 border-gray-200 max-w-xxl dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <div className="h-24">
+        <div className="">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Absenden
           </h5>
-          <p className="font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-5 font-normal text-gray-700 dark:text-gray-400">
             Vielen Dank! Ihre Angaben wurden erfolgreich erfasst. Bitte
-            überprüfen Sie diese noch einmal und bestätigen anschließend.
+            überprüfen Sie diese noch einmal und senden Sie diese anschließend
+            ab.
           </p>
         </div>
         <div className="min-w-full p-5 mb-2 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -93,7 +92,7 @@ const ConfirmationStep = ({ data, handleClick }) => {
             {`Vorname: ${data.firstName}`}
           </p>
           <p className="font-normal text-gray-700 dark:text-gray-400">
-            Nachname: Mustermann
+            {`Nachname: ${data.lastName}`}
           </p>
         </div>
 

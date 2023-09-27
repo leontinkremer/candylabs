@@ -5,9 +5,7 @@ import ConfirmationStep from "../ConfirmationStep";
 import SuccessStep from "../SuccessStep";
 
 const RegistrationForm = () => {
-  const [step, setStep] = useState("welcome");
-
-  const [personalData, setPersonalData] = useState({
+  const initialPersonalData = {
     firstName: "",
     lastName: "",
     insurances: [
@@ -22,11 +20,11 @@ const RegistrationForm = () => {
         available: false,
       },
     ],
-  });
+  };
 
-  useEffect(() => {
-    console.log("personalData", personalData);
-  }, [personalData]);
+  const [step, setStep] = useState("welcome");
+
+  const [personalData, setPersonalData] = useState(initialPersonalData);
 
   const handleFirstNameChange = (e) => {
     const value = e.target.value;
@@ -58,12 +56,17 @@ const RegistrationForm = () => {
   };
 
   const handleInsurancesClick = () => {
+    console.log("personalData", personalData);
     setStep("confirmation");
   };
 
   const handleConfirmationClick = () => {
-    console.log("personalData", personalData);
     setStep("success");
+  };
+
+  const handleSuccessClick = () => {
+    setPersonalData(initialPersonalData);
+    setStep("welcome");
   };
 
   let CurrentStep;
@@ -96,7 +99,7 @@ const RegistrationForm = () => {
       );
       break;
     case "success":
-      CurrentStep = <SuccessStep />;
+      CurrentStep = <SuccessStep handleClick={handleSuccessClick} />;
       break;
     default:
       CurrentStep = <div>Ungültiger Schritt</div>;

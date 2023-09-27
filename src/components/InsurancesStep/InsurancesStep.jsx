@@ -3,8 +3,6 @@ import React from "react";
 import Checkbox from "../Checkbox";
 
 const InsurancesStep = ({ insurances, handleCheckboxChange, handleClick }) => {
-  console.log("insurances", insurances);
-
   return (
     <>
       <nav
@@ -35,12 +33,9 @@ const InsurancesStep = ({ insurances, handleCheckboxChange, handleClick }) => {
                 d="m1 9 4-4-4-4"
               />
             </svg>
-            <a
-              href="#"
-              className="inline-flex items-center text-sm font-medium text-gray-700 hover:text-blue-600 dark:text-gray-400 dark:hover:text-white"
-            >
+            <span className="inline-flex items-center text-sm font-medium text-blue-600 dark:text-gray-400 dark:hover:text-white">
               Versicherungen
-            </a>
+            </span>
           </li>
           <li aria-current="page">
             <div className="flex items-center">
@@ -67,11 +62,11 @@ const InsurancesStep = ({ insurances, handleCheckboxChange, handleClick }) => {
         </ol>
       </nav>
       <div className="block p-10 border-gray-200 max-w-xxl dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
-        <div className="h-24">
+        <div className="">
           <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
             Versicherungen
           </h5>
-          <p className="font-normal text-gray-700 dark:text-gray-400">
+          <p className="mb-5 font-normal text-gray-700 dark:text-gray-400">
             Bitte wählen Sie die Versicherungen aus, die Sie bereits
             abgeschlossen haben.
           </p>

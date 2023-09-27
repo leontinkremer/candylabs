@@ -9,8 +9,6 @@ const Checkbox = ({ id, checked, children, handleCheckboxChange }) => {
     handleCheckboxChange(e);
   };
 
-  console.log("id", id);
-  console.log("checked", isChecked);
   return (
     <div className="flex items-center mb-4">
       <input
